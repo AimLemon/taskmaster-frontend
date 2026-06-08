@@ -15,6 +15,11 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    // Validasi Format Email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return setMsg("Format email tidak valid!");
+
     try {
       // Membersihkan penulisan URL agar tidak ada karakter tersembunyi
       const response = await axios.post(`${API_URL}/login`, {

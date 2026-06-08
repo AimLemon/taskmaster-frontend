@@ -9,6 +9,8 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setConfPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfPassword, setShowConfPassword] = useState(false);
   const [msg, setMsg] = useState(''); // Untuk menampilkan pesan error
   const navigate = useNavigate();
 
@@ -17,6 +19,14 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    // Validasi Format Email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return setMsg("Format email tidak valid!");
+
+    // Validasi Panjang Password
+    if (password.length < 6) return setMsg("Password minimal harus 6 karakter!");
+
     try {
       // Menggunakan API_URL yang sudah dibersihkan
       await axios.post(`${API_URL}/users`, {
@@ -80,27 +90,39 @@ const RegisterPage = () => {
         <div className="input-group">
           <span className="input-icon">🔑</span>
           <input 
-            type="password" 
+            type={showPassword ? "text" : "password"} 
             placeholder="Password (Min. 6 Karakter)" 
             value={password}
             style={{ paddingLeft: '45px' }}
             onChange={(e) => setPassword(e.target.value)}
             required 
           />
-          <span className="eye-icon">👁</span>
+          <span 
+            className="eye-icon" 
+            onClick={() => setShowPassword(!showPassword)}
+            style={{ cursor: 'pointer' }}
+          >
+            {showPassword ? "🙈" : "👁"}
+          </span>
         </div>
 
         <div className="input-group">
           <span className="input-icon">🔑</span>
           <input 
-            type="password" 
+            type={showConfPassword ? "text" : "password"} 
             placeholder="Konfirmasi Password" 
             value={confPassword}
             style={{ paddingLeft: '45px' }}
             onChange={(e) => setConfPassword(e.target.value)}
             required 
           />
-          <span className="eye-icon">👁</span>
+          <span 
+            className="eye-icon" 
+            onClick={() => setShowConfPassword(!showConfPassword)}
+            style={{ cursor: 'pointer' }}
+          >
+            {showConfPassword ? "🙈" : "👁"}
+          </span>
         </div>
 
         {/* Tombol diperbaiki teksnya menjadi "Daftar" agar tidak bingung */}
