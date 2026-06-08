@@ -7,6 +7,7 @@ import logo from '../assets/taskmastericon.png';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
 
@@ -74,12 +75,25 @@ const LoginPage = () => {
 
           <div className="field-group">
             <input 
-              type="password" 
+              type={showPassword ? "text" : "password"} 
               placeholder="Password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required 
             />
+            <span 
+              className="eye-icon-login" 
+              onClick={() => setShowPassword(!showPassword)}
+              style={{ 
+                cursor: 'pointer', 
+                position: 'absolute', 
+                right: '15px', 
+                top: '50%', 
+                transform: 'translateY(-50%)' 
+              }}
+            >
+              {showPassword ? "🔒" : "👁️"}
+            </span>
           </div>
 
           <button type="submit" className="btn-primary">Login</button>

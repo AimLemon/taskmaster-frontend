@@ -90,7 +90,7 @@ const RegisterPage = () => {
         <div className="input-group">
           <span className="input-icon">🔑</span>
           <input 
-            type={showPassword ? "text" : "password"} 
+            type={showPassword ? "text" : "password"}
             placeholder="Password (Min. 6 Karakter)" 
             value={password}
             style={{ paddingLeft: '45px' }}
@@ -99,17 +99,18 @@ const RegisterPage = () => {
           />
           <span 
             className="eye-icon" 
-            onClick={() => setShowPassword(!showPassword)}
-            style={{ cursor: 'pointer' }}
+            onClick={() => setShowPassword((prev) => !prev)}
+            style={{ cursor: 'pointer', userSelect: 'none' }}
+            title={showPassword ? "Sembunyikan" : "Tampilkan"}
           >
-            {showPassword ? "🙈" : "👁"}
+            {showPassword ? "🔒" : "👁️"}
           </span>
         </div>
 
         <div className="input-group">
           <span className="input-icon">🔑</span>
           <input 
-            type={showConfPassword ? "text" : "password"} 
+            type={showConfPassword ? "text" : "password"}
             placeholder="Konfirmasi Password" 
             value={confPassword}
             style={{ paddingLeft: '45px' }}
@@ -118,10 +119,11 @@ const RegisterPage = () => {
           />
           <span 
             className="eye-icon" 
-            onClick={() => setShowConfPassword(!showConfPassword)}
-            style={{ cursor: 'pointer' }}
+            onClick={() => setShowConfPassword((prev) => !prev)}
+            style={{ cursor: 'pointer', userSelect: 'none' }}
+            title={showConfPassword ? "Sembunyikan" : "Tampilkan"}
           >
-            {showConfPassword ? "🙈" : "👁"}
+            {showConfPassword ? "🔒" : "👁️"}
           </span>
         </div>
 
