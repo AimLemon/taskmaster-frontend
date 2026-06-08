@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 import './Dashboard.css';
 import logo from '../assets/taskmastericon.png';
@@ -11,6 +12,7 @@ const Dashboard = () => {
     // State Management
     const [user, setUser] = useState({ id: '', name: '', email: '' });
     const [tasks, setTasks] = useState([]);
+    const navigate = useNavigate();
     const [showAddModal, setShowAddModal] = useState(false);
     const [showProfileModal, setShowProfileModal] = useState(false);
     
@@ -57,8 +59,9 @@ const Dashboard = () => {
             setUser({ id: decoded.userId, name: decoded.name, email: decoded.email });
             return newToken;
         } catch (error) {
-            // Jika refresh token gagal/habis, arahkan kembali ke login
-            window.location.href = "/";
+            console.error("Session expired:", error);
+            localStorage.removeItem('accessToken');
+            navigate("/");
             return null;
         }
     }
@@ -208,7 +211,7 @@ const Dashboard = () => {
                 withCredentials: true
             });
             localStorage.clear();
-            window.location.href = '/';
+            navigate("/");
         } catch (err) {
             console.log(err);
         }
