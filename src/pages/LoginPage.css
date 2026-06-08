@@ -73,6 +73,7 @@ html, body {
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 15px;
+  position: relative; /* Tambahkan ini agar ikon mata bisa diposisikan relatif terhadap input */
   box-sizing: border-box;
   outline: none;
 }
