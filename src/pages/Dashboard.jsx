@@ -43,6 +43,7 @@ const Dashboard = () => {
             if (token) fetchTasks(token);
         };
         initDashboard();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const refreshToken = async () => {
