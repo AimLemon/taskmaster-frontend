@@ -12,11 +12,14 @@ const RegisterPage = () => {
   const [msg, setMsg] = useState(''); // Untuk menampilkan pesan error
   const navigate = useNavigate();
 
+  // Normalisasi URL API
+  const API_URL = process.env.REACT_APP_API_URL?.replace(/\/$/, "");
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      // Menghubungkan ke Backend (sesuaikan port jika bukan 5000)
-      await axios.post(`${process.env.REACT_APP_API_URL}/users`, {
+      // Menggunakan API_URL yang sudah dibersihkan
+      await axios.post(`${API_URL}/users`, {
         name: name,
         email: email,
         password: password,

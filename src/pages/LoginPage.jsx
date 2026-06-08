@@ -10,6 +10,7 @@ const LoginPage = () => {
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
 
+  // Normalisasi URL agar tidak ada double slash saat digabung dengan endpoint
   const API_URL = process.env.REACT_APP_API_URL?.replace(/\/$/, "");
 
   const handleLogin = async (e) => {
