@@ -67,13 +67,17 @@ html, body {
   gap: 12px;
 }
 
+.field-group {
+  position: relative;
+  width: 100%;
+}
+
 .field-group input {
   width: 100%;
-  padding: 12px 15px;
+  padding: 12px 40px 12px 15px; /* Ditambah padding kanan agar teks password tidak menumpuk dengan ikon */
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 15px;
-  position: relative; /* Tambahkan ini agar ikon mata bisa diposisikan relatif terhadap input */
   box-sizing: border-box;
   outline: none;
 }
