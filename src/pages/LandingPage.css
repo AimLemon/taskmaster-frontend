@@ -1,0 +1,104 @@
+/* src/pages/LandingPage.css */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  /* Mengunci layar agar tidak scrollable */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  box-sizing: border-box;
+  
+  background-color: #ffffff;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.landing-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.landing-title {
+  color: #1e3a8a; /* Biru Gelap sesuai desain Figma */
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.landing-description {
+  max-width: 500px;
+  color: #4b5563;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.landing-divider {
+  width: 100%;
+  max-width: 400px;
+  border-top: 1.5px solid #e5e7eb;
+  margin-bottom: 30px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.btn {
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-primary {
+  background-color: #3b82f6; /* Biru Muda sesuai preferensi */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+}
+
+.btn-google {
+  background-color: white;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
+}
+
+.btn-google:hover {
+  background-color: #eff6ff;
+}
+
+.btn-register {
+  background-color: white;
+  color: #1e3a8a;
+  border: 2px solid #1e3a8a;
+}
+
+.btn-register:hover {
+  background-color: #f3f4f6;
+}
+
+.footer-text {
+  margin-top: 50px;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}

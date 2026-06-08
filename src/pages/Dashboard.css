@@ -1,0 +1,527 @@
+/* ==========================================
+   LAYOUT UTAMA
+   ========================================== */
+.dashboard-container {
+    background-color: #f0f7ff;
+    min-height: 100vh;
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ==========================================
+   NAVBAR (HEADER)
+   ========================================== */
+.navbar {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    padding: 12px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar-logo { 
+    height: 42px; 
+    width: 42px; 
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.brand-text h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.brand-text p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.btn-add-task {
+    background: #ffffff;
+    color: #1e3a8a;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add-task:hover {
+    background: #f1f5f9;
+    transform: translateY(-2px);
+}
+
+.profile-container {
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.profile-container:hover { opacity: 0.8; }
+
+.profile-circle { font-size: 24px; }
+.profile-container span { font-size: 11px; font-weight: 600; }
+
+/* ==========================================
+   PROGRESS SECTION
+   ========================================== */
+.progress-section { padding: 25px 50px; }
+
+.progress-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #334155;
+}
+
+.bar-outer {
+    background: #e2e8f0;
+    height: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar-inner {
+    background: linear-gradient(90deg, #3b82f6, #2dd4bf);
+    height: 100%;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================
+   SPLIT CONTENT LAYOUT (KIRI & KANAN)
+   ========================================== */
+.dashboard-content-split {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    padding: 0 50px 50px;
+    align-items: flex-start;
+}
+
+.task-section {
+    flex: 1;
+    min-width: 0; /* Mencegah overflow pada konten flex */
+}
+
+.task-section:first-child {
+    border-right: 2px solid #e2e8f0;
+    padding-right: 40px;
+    margin-right: 40px;
+}
+
+.section-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-bottom: 0 !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.search-filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box input {
+    padding: 8px 12px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    transition: all 0.3s;
+    width: 140px;
+}
+
+.search-box input:focus {
+    border-color: #3b82f6;
+    width: 180px;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.filter-dropdown-wrapper {
+    position: relative;
+}
+
+/* Jembatan transparan agar hover tidak terputus saat melewati celah 10px */
+.filter-dropdown-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 15px; 
+    background: transparent;
+}
+
+.btn-filter-toggle {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    color: #475569;
+    transition: 0.2s;
+}
+
+.btn-filter-toggle:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.filter-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+    width: 200px;
+}
+
+.filter-dropdown-wrapper:hover .filter-menu {
+    display: flex;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.filter-item label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.filter-item input, .filter-item select {
+    padding: 6px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 12px;
+    outline: none;
+}
+
+.btn-clear-filter {
+    position: absolute;
+    top: 22px;
+    right: 5px;
+    background: #fee2e2;
+    color: #ef4444;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-grid-vertical {
+    display: grid;
+    /* Membuat 3 kolom yang sama rata */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    align-items: start; /* Mencegah card memanjang ke bawah mengikuti card tertinggi di baris yang sama */
+}
+
+.empty-msg {
+    text-align: center;
+    color: #94a3b8;
+    padding: 40px 20px;
+    background: #f8fafc;
+    border: 2px dashed #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    grid-column: 1 / -1; /* Agar pesan kosong mengambil seluruh lebar grid */
+}
+
+.subject-group-card {
+    width: 100%;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    height: fit-content;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.subject-group-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.subject-header-clickable {
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: white;
+}
+
+.subject-header-clickable:hover { background: #f8fafc; }
+
+.subj-info { display: flex; align-items: center; gap: 12px; }
+.subj-info h3 { margin: 0; font-size: 16px; color: #1e293b; font-weight: 700; }
+
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+
+.arrow { font-size: 10px; color: #94a3b8; transition: transform 0.3s ease; }
+.arrow.up { transform: rotate(180deg); }
+
+/* DROPDOWN LIST ITEM */
+.task-dropdown-list {
+    background: #fcfdfe;
+    border-top: 1px solid #f1f5f9;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.task-item-row {
+    padding: 14px 20px; /* Kembali ke padding standar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f8fafc;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item-row:hover { background: #f1f7ff; }
+
+.task-title-mini { font-weight: 600; font-size: 14px; color: #334155; }
+.task-date-mini { font-size: 12px; color: #64748b; }
+.task-main-info {
+    display: flex;
+    align-items: center; /* Agar dot dan teks sejajar vertikal */
+    gap: 8px; /* Jarak antara dot dan konten teks */
+}
+.task-text-content { /* Wrapper baru untuk judul dan tanggal */
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.task-title-mini { font-weight: 600; font-size: 14px; color: #334155; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; } /* Prevent long titles from breaking layout */
+.task-days-mini { font-weight: 700; font-size: 12px; color: #ef4444; }
+
+/* ==========================================
+   MODAL POP WINDOW (RAPIH & MODERN)
+   ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.btn-close-x {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.btn-close-x:hover {
+    color: #ef4444;
+}
+
+.modal-box h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #475569;
+}
+
+.input-group input, 
+.input-group select,
+.input-group textarea {
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box; /* Mencegah input melebar keluar modal */
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #3b82f6;
+}
+
+/* KHUSUS INPUT WARNA: Kotak pendek rapi */
+.input-group input[type="color"] {
+    width: 100%;
+    height: 40px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.subject-select-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-toggle-new {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-submit-form {
+    width: 100%;
+    padding: 12px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-submit-form:hover {
+    background: #2563eb;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.btn-complete-action { flex: 1; background: #10b981; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+.btn-complete-action:hover { background: #059669; }
+
+.btn-undo-action { flex: 1; background: #f59e0b; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+.btn-undo-action:hover { background: #d97706; }
+
+.btn-edit-action { flex: 1; background: #3b82f6; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+.btn-delete-action { flex: 1; background: #fee2e2; color: #ef4444; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+.btn-cancel { background: #f1f5f9; color: #64748b; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+
+/* Tambahan styling untuk fitur baru */
+.btn-view-file { width: 100%; background: #f1f5f9; color: #1e3a8a; border: 1px solid #cbd5e1; padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+.btn-view-file:hover { background: #e2e8f0; }
+
+.profile-box { text-align: center; }
+.avatar-large { font-size: 60px; margin-bottom: 15px; }
+.btn-logout { width: 100%; background: #ef4444; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; margin-top: 20px; cursor: pointer; transition: 0.2s; }
+.btn-logout:hover { background: #dc2626; }
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 768px) {
+    .navbar { padding: 10px 20px; }
+    .progress-section { padding: 15px 20px; }
+    .dashboard-content-split { flex-direction: column; padding: 0 20px 20px; gap: 30px; }
+    .task-section:first-child {
+        border-right: none;
+        padding-right: 0;
+        margin-right: 0;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 30px;
+    }
+    .task-grid-vertical { grid-template-columns: 1fr; } /* Di HP jadi 1 kolom saja */
+}

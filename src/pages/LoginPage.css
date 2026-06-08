@@ -1,0 +1,141 @@
+/* Reset Dasar & Kunci Scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Mematikan scroll browser */
+}
+
+/* Container Utama */
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Tombol Kembali */
+.top-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 30px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: #1e3a8a;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Kartu Login */
+.login-card {
+  width: 100%;
+  max-width: 360px; /* Ukuran pas agar tidak memicu scroll */
+  text-align: center;
+}
+
+.login-brand {
+  margin-bottom: 25px;
+}
+
+.login-card h1 {
+  color: #1e3a8a;
+  font-size: 28px;
+  margin: 5px 0;
+}
+
+.login-card p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Form Styling */
+.form-auth {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.field-group input:focus {
+  border-color: #3b82f6;
+}
+
+/* Button Styling */
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.divider {
+  color: #94a3b8;
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #3b82f6;
+  color: #1e3a8a;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-google img {
+  width: 18px;
+}
+
+/* Alert Error */
+.alert-error {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.footer-text {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.footer-text a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+}
