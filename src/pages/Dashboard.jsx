@@ -5,6 +5,9 @@ import './Dashboard.css';
 import logo from '../assets/taskmastericon.png';
 
 const Dashboard = () => {
+    // Membersihkan trailing slash dari URL API agar tidak terjadi double slash
+    const API_URL = process.env.REACT_APP_API_URL?.replace(/\/$/, "");
+
     // State Management
     const [user, setUser] = useState({ id: '', name: '', email: '' });
     const [tasks, setTasks] = useState([]);
@@ -44,7 +47,7 @@ const Dashboard = () => {
 
     const refreshToken = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/token`, {
+            const response = await axios.get(`${API_URL}/token`, {
                 withCredentials: true
             });
             const newToken = response.data.accessToken;
@@ -61,7 +64,7 @@ const Dashboard = () => {
 
     const fetchTasks = async (token) => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`, {
+            const res = await axios.get(`${API_URL}/tasks`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setTasks(res.data);
@@ -86,7 +89,7 @@ const Dashboard = () => {
         };
 
         try { 
-            await axios.post(`${process.env.REACT_APP_API_URL}/tasks`, payload, {
+            await axios.post(`${API_URL}/tasks`, payload, {
                 headers: { 
                     Authorization: `Bearer ${token}`
                 }
@@ -116,7 +119,7 @@ const Dashboard = () => {
         };
 
         try { 
-            await axios.patch(`${process.env.REACT_APP_API_URL}/tasks/${editForm.id}`, payload, {
+            await axios.patch(`${API_URL}/tasks/${editForm.id}`, payload, {
                 headers: { 
                     Authorization: `Bearer ${token}`
                 }
@@ -136,7 +139,7 @@ const Dashboard = () => {
         if (window.confirm("Apakah kamu yakin ingin menghapus tugas ini?")) {
             const token = await refreshToken();
             try {
-                await axios.delete(`${process.env.REACT_APP_API_URL}/tasks/${id}`, {
+                await axios.delete(`${API_URL}/tasks/${id}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setDetailTask(null);
@@ -171,7 +174,7 @@ const Dashboard = () => {
         };
 
         try { 
-            await axios.patch(`${process.env.REACT_APP_API_URL}/tasks/${task.id}`, payload, {
+            await axios.patch(`${API_URL}/tasks/${task.id}`, payload, {
                 headers: { 
                     Authorization: `Bearer ${token}`
                 }
@@ -187,7 +190,7 @@ const Dashboard = () => {
         e.preventDefault();
         const token = await refreshToken();
         try {
-            await axios.patch(`${process.env.REACT_APP_API_URL}/users/${user.id}`, profileForm, {
+            await axios.patch(`${API_URL}/users/${user.id}`, profileForm, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUser({ ...user, name: profileForm.name, email: profileForm.email });
@@ -200,7 +203,7 @@ const Dashboard = () => {
 
     const handleLogout = async () => {
         try {
-            await axios.delete(`${process.env.REACT_APP_API_URL}/logout`, {
+            await axios.delete(`${API_URL}/logout`, {
                 withCredentials: true
             });
             localStorage.clear();

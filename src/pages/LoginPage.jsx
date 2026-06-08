@@ -10,11 +10,13 @@ const LoginPage = () => {
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
 
+  const API_URL = process.env.REACT_APP_API_URL?.replace(/\/$/, "");
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       // Membersihkan penulisan URL agar tidak ada karakter tersembunyi
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, {
+      const response = await axios.post(`${API_URL}/login`, {
         email: email,
         password: password
       }, {
