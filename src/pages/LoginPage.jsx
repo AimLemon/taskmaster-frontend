@@ -17,6 +17,9 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    // Validasi Field Kosong
+    if (!email || !password) return setMsg("Email dan Password wajib diisi!");
+
     // Validasi Format Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) return setMsg("Format email tidak valid!");
@@ -62,14 +65,13 @@ const LoginPage = () => {
 
         {msg && <div className="alert-error">{msg}</div>}
 
-        <form onSubmit={handleLogin} className="form-auth">
+        <form onSubmit={handleLogin} className="form-auth" noValidate>
           <div className="field-group">
             <input 
               type="email" 
               placeholder="Email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required 
             />
           </div>
 
@@ -79,7 +81,6 @@ const LoginPage = () => {
               placeholder="Password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required 
             />
             <span 
               className="eye-icon-login" 

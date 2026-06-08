@@ -20,6 +20,9 @@ const RegisterPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    // Validasi Field Kosong
+    if (!name || !email || !password || !confPassword) return setMsg("Semua field harus diisi!");
+
     // Validasi Format Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) return setMsg("Format email tidak valid!");
@@ -62,7 +65,7 @@ const RegisterPage = () => {
       {/* Menampilkan Pesan Error jika ada */}
       {msg && <p className="error-message" style={{ color: 'red', textAlign: 'center' }}>{msg}</p>}
 
-      <form className="register-form" onSubmit={handleRegister}>
+      <form className="register-form" onSubmit={handleRegister} noValidate>
         <div className="input-group">
           <span className="input-icon">👤</span>
           <input 
@@ -71,7 +74,6 @@ const RegisterPage = () => {
             value={name}
             style={{ paddingLeft: '45px' }}
             onChange={(e) => setName(e.target.value)}
-            required 
           />
         </div>
 
@@ -83,7 +85,6 @@ const RegisterPage = () => {
             value={email}
             style={{ paddingLeft: '45px' }}
             onChange={(e) => setEmail(e.target.value)}
-            required 
           />
         </div>
 
