@@ -4,6 +4,9 @@
 .dashboard-container {
     background-color: #f0f7ff;
     min-height: 100vh;
+    height: 100vh; /* Memastikan container mengambil seluruh tinggi viewport */
+    display: flex; /* Mengaktifkan Flexbox */
+    flex-direction: column; /* Menyusun item secara vertikal */
     font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -525,7 +528,14 @@
 @media (max-width: 768px) {
     .navbar { padding: 10px 15px; }
     .progress-section { padding: 15px 20px; }
-    .dashboard-content-split { flex-direction: column; padding: 0 20px 20px; gap: 30px; }
+    .dashboard-content-split { 
+        flex-direction: column; 
+        padding: 0 20px 20px; 
+        gap: 30px;
+        flex-grow: 1; /* Memungkinkan bagian ini mengambil sisa ruang vertikal */
+        overflow-y: auto; /* Mengaktifkan scrolling vertikal */
+        -webkit-overflow-scrolling: touch; /* Untuk scrolling yang lebih halus di iOS */
+    }
     .task-section:first-child {
         border-right: none;
         padding-right: 0;
@@ -534,7 +544,6 @@
         padding-bottom: 30px;
     }
     .task-grid-vertical { grid-template-columns: 1fr; } /* Di HP jadi 1 kolom saja */
-
     .nav-actions { gap: 12px; }
     .btn-add-task {
         padding: 6px 12px;
